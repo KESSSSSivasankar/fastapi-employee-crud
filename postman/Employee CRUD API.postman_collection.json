@@ -1,0 +1,163 @@
+﻿{
+  "info": {
+    "_postman_id": "b0c9c45f-1f2b-4a9c-a8ee-6c1f7b1dfc4a",
+    "name": "Employee CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "employeeId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"first_name\": \"Asha\",\n  \"last_name\": \"Patel\",\n  \"email\": \"asha.patel@example.com\",\n  \"phone\": \"+91-99999-88888\",\n  \"department\": \"Engineering\",\n  \"title\": \"Backend Engineer\",\n  \"salary\": 120000,\n  \"date_of_joining\": \"2024-01-15\",\n  \"is_active\": true\n}\n"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/employees",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Employees",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/employees?skip=0&limit=50",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "50"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Employees",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/employees?q=eng",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "eng"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Employee By Id",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/employees/{{employeeId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees",
+            "{{employeeId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Employee (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"department\": \"Platform\",\n  \"title\": \"Senior Backend Engineer\",\n  \"salary\": 150000\n}\n"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/employees/{{employeeId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees",
+            "{{employeeId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Employee",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/employees/{{employeeId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "employees",
+            "{{employeeId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
